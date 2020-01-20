@@ -1,8 +1,15 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import "./menuItem.styles.scss";
 
-const MenuItem = ({ title, size, imageUrl }) => (
-  <div className={`${size} menu-item`}>
+// just for learning sake, I have modified the current components and also its related components
+// To be done according to the project
+
+const MenuItem = ({ title, size, imageUrl, history }) => (
+  <div
+    className={`${size} menu-item`}
+    onClick={() => history.push(`/${title}/1`)}
+  >
     <div
       className="background-image"
       style={{
@@ -11,9 +18,9 @@ const MenuItem = ({ title, size, imageUrl }) => (
     />
     <div className="content">
       <h1 className="title">{title.toUpperCase()}</h1>
-      <span className="sub-title">SHOT NOW</span>
+      <span className="sub-title">SHOP NOW</span>
     </div>
   </div>
 );
 
-export default MenuItem;
+export default withRouter(MenuItem);
