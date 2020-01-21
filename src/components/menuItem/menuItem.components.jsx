@@ -2,9 +2,6 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import "./menuItem.styles.scss";
 
-// just for learning sake, I have modified the current components and also its related components
-// To be done according to the project
-
 const MenuItem = ({ title, size, imageUrl, history }) => (
   <div
     className={`${size} menu-item`}
