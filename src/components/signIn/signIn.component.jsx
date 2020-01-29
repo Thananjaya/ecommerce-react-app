@@ -41,7 +41,7 @@ class SignIn extends Component {
             required
           />
           <CustomButton type="submit">SignIn</CustomButton>
-          <CustomButton onClick={signinWithGoogle}>
+          <CustomButton onClick={signinWithGoogle} googleSignIn>
             Sign In with Google
           </CustomButton>
         </form>
