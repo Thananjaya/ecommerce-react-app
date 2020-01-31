@@ -18,11 +18,10 @@ class App extends Component {
   unSubscribe = null;
 
   componentDidMount() {
-    this.unSubscribe = auth.onAuthStateChanged(user => {
-      this.setState({ currentUser: user });
+    this.unSubscribe = auth.onAuthStateChanged(async userAuth => {
+      this.setState({ currentUser: userAuth });
+      const userRef = await createUserProfileDocument(userAuth);
     });
-
-    const userRef = await createUserProfileDocument(userAuth);
   }
 
   componentWillUnmount() {
