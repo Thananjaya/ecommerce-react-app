@@ -1,9 +1,10 @@
 import React from "react";
 import SignIn from "../../components/signIn/signIn.component.jsx";
 import SignUp from "../../components/signUp/signUp.component";
+import "./signing.styles.scss";
 
 const Signing = () => (
-  <div>
+  <div className="signing">
     <SignIn />
     <SignUp />
   </div>

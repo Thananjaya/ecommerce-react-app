@@ -27,8 +27,15 @@ class SignUp extends Component {
         password
       });
       await createUserProfileDocument(user, userName);
+
+      this.setState({
+        userName: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+      });
     } catch (error) {
-      console.log("Error Occured ", error);
+      console.error("Error Occured ", error);
     }
   };
 
@@ -47,6 +54,7 @@ class SignUp extends Component {
           <FormInput
             name="userName"
             type="text"
+            label="Name"
             value={userName}
             onChange={this.handleChange}
             required
@@ -54,18 +62,21 @@ class SignUp extends Component {
           <FormInput
             name="email"
             type="email"
+            label="Email"
             value={email}
             onChange={this.handleChange}
           />
           <FormInput
             name="password"
             type="password"
+            label="Password"
             value={password}
             onChange={this.handleChange}
           />
           <FormInput
             name="confirmPassword"
             type="password"
+            label="Confirm Password"
             value={confirmPassword}
             onChange={this.handleChange}
           />
