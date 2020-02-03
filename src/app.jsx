@@ -29,6 +29,7 @@ class App extends Component {
             }
           });
         });
+        console.log(this.state);
       } else {
         this.setState({
           currentUser: userAuth
