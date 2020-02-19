@@ -1,5 +1,7 @@
+import { userConstants } from './userConstant';
+
 const setCurrentUser = user => ({
-  type: "SET_CURRENT_USER",
+  type: userConstants.setCurrentUser,
   payload: user
 });
 
