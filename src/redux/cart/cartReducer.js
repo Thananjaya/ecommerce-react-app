@@ -1,7 +1,8 @@
-import { cartConstants } from './cartConstant';
+import cartConstants from './cartConstant';
 
 const initialState = {
-	hidden: true
+	hidden: true,
+	cartItems: []
 }
 
 const cartReducer = (state = initialState, action) => {
@@ -9,6 +10,11 @@ const cartReducer = (state = initialState, action) => {
 		case cartConstants.setCartDropDown:
 			return {
 				hidden: !state.hidden
+			}
+		case cartConstants.addItem:
+			return {
+				...state,
+				cartItems: [...state.cartItems, action.payload]
 			}
 		default:
 			return state;
