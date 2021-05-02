@@ -10,29 +10,34 @@ class MenuListing extends Component {
         {
           title: "hats",
           imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
-          id: 1
+          id: 1,
+          linkUrl: '/hats'
         },
         {
           title: "jackets",
           imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
-          id: 2
+          id: 2,
+          linkUrl: '/hats'
         },
         {
           title: "sneakers",
           imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
-          id: 3
+          id: 3,
+          linkUrl: '/hats'
         },
         {
           title: "womens",
           imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
           size: "large",
-          id: 4
+          id: 4,
+          linkUrl: '/hats'
         },
         {
           title: "mens",
           imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
           size: "large",
-          id: 5
+          id: 5,
+          linkUrl: '/hats'
         }
       ]
     };
@@ -41,8 +46,8 @@ class MenuListing extends Component {
   render() {
     return (
       <div className="menu-listing">
-        {this.state.sections.map(({ id, ...sectonProps }) => {
-          return <MenuItem key={id} {...sectonProps} />;
+        {this.state.sections.map(({ id, ...sectionProps }) => {
+          return <MenuItem key={id} {...sectionProps} />;
         })}
       </div>
     );
