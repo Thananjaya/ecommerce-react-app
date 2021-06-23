@@ -7,40 +7,37 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./header.styles.scss";
 
-const Header = (currentUser, hidden) => (  
-  <div className="header">
-    <Link className="logo-container" to="/">
-      <Logo className="logo" />
-    </Link>
-    <div className="options">
-      <Link to="/shop" className="option">
-        Shop
+const Header = ({currentUser}, hidden= true) => {  
+  return(
+    <div className="header">
+      <Link className="logo-container" to="/">
+        <Logo className="logo" />
       </Link>
-      <Link to="/contact" className="option">
-        Contact
-      </Link>
-      {currentUser ? (
-        <div
-          className="option"
-          onClick={() => auth.signOut()}
-          style={{ cursor: "pointer" }}
-        >
-          Sign Out
-        </div>
-      ) : (
-        <Link to="/signIn" className="option">
-          Sign In
+      <div className="options">
+        <Link to="/shop" className="option">
+          Shop
         </Link>
-      )}
-      <CartIcon />
+        <Link to="/contact" className="option">
+          Contact
+        </Link>
+        {currentUser ? (
+          <div
+            className="option"
+            onClick={() => auth.signOut()}
+            style={{ cursor: "pointer" }}
+          >
+            Sign Out
+          </div>
+        ) : (
+          <Link to="/signIn" className="option">
+            Sign In
+          </Link>
+        )}
+        <CartIcon />
+      </div>
+      { hidden ? null : <CartDropDown /> }
     </div>
-    { hidden ? null : <CartDropDown /> }
-  </div>
-);
+)};
 
-const mapStateToProps = ({user: { currentUser }, cart: { hidden }}) => ({
-  currentUser,
-  hidden
-});
 
-export default connect(mapStateToProps)(Header);
+export default Header;

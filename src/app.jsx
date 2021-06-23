@@ -20,8 +20,22 @@ class App extends Component {
   unsubscribe = () => null;
 
   componentDidMount(){
-    this.unSubscribe = auth.onAuthStateChanged(user => {
-      this.setState({currentUser: user});
+    this.unSubscribe = auth.onAuthStateChanged(async userData => {
+      if(userData) {
+        const userRef = await createUserProfileDocument(userData);
+
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: 
+            {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          });
+        });
+      } else {
+        this.setState({currentUser: null})
+      }
     })
   }
 
@@ -46,7 +60,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.currentUser);
+    console.log(this.state.currentUser)
     return (
       <div>
         <Header currentUser={this.state.currentUser}/>
