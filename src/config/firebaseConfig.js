@@ -3,14 +3,13 @@ import "firebase/firestore";
 import "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAFoHWqsmbuPlRtzkA2CAus6KeS6NWhg8E",
-  authDomain: "clothing-1993.firebaseapp.com",
-  databaseURL: "https://clothing-1993.firebaseio.com",
-  projectId: "clothing-1993",
-  storageBucket: "clothing-1993.appspot.com",
-  messagingSenderId: "426871660325",
-  appId: "1:426871660325:web:ff7d7e4d518d22b8a944cc",
-  measurementId: "G-CNRKVBJ4ZB"
+  apiKey: "AIzaSyCX_JCG1jGe97nfrXC1YHW6cCtp-b4I41I",
+  authDomain: "cloth-shop-6150c.firebaseapp.com",
+  projectId: "cloth-shop-6150c",
+  storageBucket: "cloth-shop-6150c.appspot.com",
+  messagingSenderId: "380091522055",
+  appId: "1:380091522055:web:d4df7762555db4c1219ea2",
+  measurementId: "G-LG0FBSD5VS"
 };
 
 firebase.initializeApp(firebaseConfig);
