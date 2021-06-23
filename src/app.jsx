@@ -10,32 +10,46 @@ import ShopPage from "./pages/shoppage/shoppage.component.jsx";
 import "./app.css";
 
 class App extends Component {
-  unSubscribe = null;
-
-  componentDidMount() {
-    this.unSubscribe = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapshot => {
-          this.props.currentUser({
-            id: snapshot.id,
-            ...snapshot.data()
-          })
-        });
-      } else {
-        this.props.currentUser(userAuth)
-      }
-    });
+  constructor(){
+    super();
+    this.state = {
+      currentUser: null
+    }
   }
+
+  unsubscribe = () => null;
+
+  componentDidMount(){
+    this.unSubscribe = auth.onAuthStateChanged(user => {
+      this.setState({currentUser: user});
+    })
+  }
+
+  // componentDidMount() {
+  //   this.unSubscribe = auth.onAuthStateChanged(async userAuth => {
+  //     if (userAuth) {
+  //       const userRef = await createUserProfileDocument(userAuth);
+  //       userRef.onSnapshot(snapshot => {
+  //         this.props.currentUser({
+  //           id: snapshot.id,
+  //           ...snapshot.data()
+  //         })
+  //       });
+  //     } else {
+  //       this.props.currentUser(userAuth)
+  //     }
+  //   });
+  // }
 
   componentWillUnmount() {
     this.unSubscribe();
   }
 
   render() {
+    console.log(this.state.currentUser);
     return (
       <div>
-        <Header/>
+        <Header currentUser={this.state.currentUser}/>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/signIn" render={() => this.props.currentUserInfo ? (<Redirect to="/" />) : (<Signing />)} />
