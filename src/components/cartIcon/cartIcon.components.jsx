@@ -6,12 +6,12 @@ import "./cartIcon.styles.scss";
 
 
 // to be reodified
-// const CartIcon = ({ cartDropDown }) => (
-//   <div className="cart-icon" onClick={cartDropDown}>
-//     <CartLogo className="shopping-icon" />
-//     <span className="count">0</span>
-//   </div>
-// )
+const CartIcon = ({ cartDropDown }) => (
+  <div className="cart-icon" onClick={cartDropDown}>
+    <CartLogo className="shopping-icon" />
+    <span className="count">0</span>
+  </div>
+)
 
 const mapDispatchToProps = dispatch => ({
   cartDropDown: () => dispatch(setCartDropDown())
