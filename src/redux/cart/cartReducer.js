@@ -10,6 +10,7 @@ const cartReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case cartConstants.setCartDropDown:
 			return {
+				...state,
 				hidden: !state.hidden
 			}
 		case cartConstants.addItem:
