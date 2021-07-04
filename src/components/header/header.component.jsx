@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./header.styles.scss";
 
-const Header = ({currentUser}, hidden= true) => {  
+const Header = ({currentUser, hidden}) => {  
   return(
     <div className="header">
       <Link className="logo-container" to="/">
@@ -35,13 +35,14 @@ const Header = ({currentUser}, hidden= true) => {
         )}
         <CartIcon />
       </div>
-      { hidden ? null : <CartDropDown /> }
+      {hidden ? null : <CartDropDown />}
     </div>
 )};
 
 // it is used to provide the store data to your component
 const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+  currentUser: state.user.currentUser,
+  hidden: state.cart.hidden
 });
 
 // connect is the higher order component which 
