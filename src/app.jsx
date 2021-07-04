@@ -10,60 +10,33 @@ import ShopPage from "./pages/shoppage/shoppage.component.jsx";
 import "./app.css";
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      currentUser: null
-    }
-  }
 
   unsubscribe = () => null;
 
-  componentDidMount(){
-    this.unSubscribe = auth.onAuthStateChanged(async userData => {
-      if(userData) {
-        const userRef = await createUserProfileDocument(userData);
-
-        userRef.onSnapshot(snapShot => {
-          this.setState({
-            currentUser: 
-            {
-              id: snapShot.id,
-              ...snapShot.data()
-            }
-          });
+  componentDidMount() {
+    this.unSubscribe = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        userRef.onSnapshot(snapshot => {
+          this.props.currentUser({
+            id: snapshot.id,
+            ...snapshot.data()
+          })
         });
       } else {
-        this.setState({currentUser: null})
+        this.props.currentUser(null)
       }
-    })
+    });
   }
-
-  // componentDidMount() {
-  //   this.unSubscribe = auth.onAuthStateChanged(async userAuth => {
-  //     if (userAuth) {
-  //       const userRef = await createUserProfileDocument(userAuth);
-  //       userRef.onSnapshot(snapshot => {
-  //         this.props.currentUser({
-  //           id: snapshot.id,
-  //           ...snapshot.data()
-  //         })
-  //       });
-  //     } else {
-  //       this.props.currentUser(userAuth)
-  //     }
-  //   });
-  // }
 
   componentWillUnmount() {
     this.unSubscribe();
   }
 
   render() {
-    console.log(this.state.currentUser)
     return (
       <div>
-        <Header currentUser={this.state.currentUser}/>
+        <Header/>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/signIn" render={() => this.props.currentUserInfo ? (<Redirect to="/" />) : (<Signing />)} />
@@ -74,12 +47,10 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUserInfo: user.currentUser
+// it is used for connecting action 
+// which inturn used for updating the store
+const mapDispatchToProps = dispatch => ({
+  currentUser: user => dispatch(setCurrentUser(user))
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  currentUser: user => dispatch(setCurrentUser(user))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

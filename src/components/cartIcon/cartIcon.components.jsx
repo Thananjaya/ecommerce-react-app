@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import "./cartIcon.styles.scss";
 
 
-// to be reodified
 const CartIcon = ({ cartDropDown }) => (
   <div className="cart-icon" onClick={cartDropDown}>
     <CartLogo className="shopping-icon" />

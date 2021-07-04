@@ -39,5 +39,12 @@ const Header = ({currentUser}, hidden= true) => {
     </div>
 )};
 
+// it is used to provide the store data to your component
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
 
-export default Header;
+// connect is the higher order component which 
+// is used for 
+// connecting component to redux store
+export default connect(mapStateToProps)(Header);
