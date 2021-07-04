@@ -7,9 +7,9 @@ const ShopCollection = ({ title, items }) => (
     <h1 className="title">{title.toUpperCase()}</h1>
     <div className="preview">
       {items
-        .filter((items, index) => index <= 4)
-        .map(({ id, ...itemData }) => (
-          <CollectionListing key={id} {...itemData} />
+        .filter((item, index) => index <= 4)
+        .map((item) => (
+          <CollectionListing key={item.id} item={item} />
         ))}
     </div>
   </div>
