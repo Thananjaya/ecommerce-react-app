@@ -5,10 +5,10 @@ import { connect } from "react-redux";
 import "./cartIcon.styles.scss";
 
 
-const CartIcon = ({ cartDropDown }) => (
+const CartIcon = ({ cartDropDown, itemCount }) => (
   <div className="cart-icon" onClick={cartDropDown}>
     <CartLogo className="shopping-icon" />
-    <span className="count">0</span>
+    <span className="count">{itemCount}</span>
   </div>
 )
 
@@ -16,4 +16,10 @@ const mapDispatchToProps = dispatch => ({
   cartDropDown: () => dispatch(setCartDropDown())
 })
 
-export default connect(null, mapDispatchToProps)(CartIcon);
+const mapStateToProps = state => ({
+  itemCount: state.cart.cartItems.reduce((accumulator, cartItem) =>
+    accumulator + cartItem.quantity
+  , 0)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
