@@ -7,6 +7,7 @@ import Header from "./components/header/header.component.jsx";
 import Signing from "./pages/signing/signing.component.jsx";
 import HomePage from "./pages/homepage/homepage.components.jsx";
 import ShopPage from "./pages/shoppage/shoppage.component.jsx";
+import CheckoutPage from "./pages/checkout/checkout.component.jsx";
 import "./app.css";
 
 class App extends Component {
@@ -41,6 +42,7 @@ class App extends Component {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/signIn" render={() => this.props.user ? (<Redirect to="/" />) : (<Signing />)} />
           <Route exact path="/shop" component={ShopPage} />
+          <Route excat path="/checkout" component={CheckoutPage}/>
         </Switch>
       </div>
     );

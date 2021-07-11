@@ -2,6 +2,7 @@ import React from 'react';
 import CustomButton from '../customButton/customButton.component';
 import CartItem from "../cartItem/cartItem.component";
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import "./cartDropdown.styles.scss";
 
 const CartDropDown = ({cartItems}) => (
@@ -22,4 +23,4 @@ const mapStateToProps = state => ({
   cartItems: state.cart.cartItems 
 })
 
-export default connect(mapStateToProps)(CartDropDown);
+export default withRouter(connect(mapStateToProps)(CartDropDown));
