@@ -14,3 +14,7 @@ export const removeItem = (item) => ({
 	payload: item
 })
 
+export const decreaseQauntity = (item) => ({
+	type: cartConstants.decreaseQuantity,
+	payload: item
+})

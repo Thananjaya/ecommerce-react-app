@@ -1,7 +1,8 @@
 const cartConstants = {
   setCartDropDown: "setCartDropDown" ,
   addItem: "addItem",
-  removeItem: "removeItem"
+  removeItem: "removeItem",
+  decreaseQuantity: "decreaseQauntity"
 }
 
 export default cartConstants;
